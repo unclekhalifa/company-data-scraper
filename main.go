@@ -11,7 +11,7 @@ import (
 	"path"
 	"path/filepath"
 
-	"github.com/khalifa-is/datadownloader"
+	"github.com/khalifa-is/datademon"
 )
 
 func main() {
@@ -52,12 +52,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	files, err := datadownloader.Unzip(filepath.Join("data", "company-data.zip"), "data")
+	files, err := datademon.Unzip(filepath.Join("data", "company-data.zip"), "data")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	records := datadownloader.ReadCsvFile(files[0])
+	records := datademon.ReadCsvFile(files[0])
 	fmt.Println(records[0])
 
 	dir, err := ioutil.ReadDir("data")
