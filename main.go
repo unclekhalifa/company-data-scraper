@@ -14,6 +14,27 @@ import (
 	"github.com/khalifa-is/datademon"
 )
 
+type Company struct {
+	CompanyName   string
+	CompanyNumber string
+
+	Careof string
+	POBox  string
+
+	AddressLine1 string
+	AddressLine2 string
+	PostTown     string
+	County       string
+	Country      string
+	PostCode     string
+
+	CompanyCategory   string
+	CompanyStatus     string
+	CountryOfOrigin   string
+	DissolutionDate   string
+	IncorporationDate string
+}
+
 func main() {
 	jsonFile, err := os.Open("config.json")
 	if err != nil {
@@ -58,7 +79,7 @@ func main() {
 	}
 
 	records := datademon.ReadCsvFile(files[0])
-	fmt.Println(records[0])
+	fmt.Println(records[1])
 
 	dir, err := ioutil.ReadDir("data")
 	if err != nil {
