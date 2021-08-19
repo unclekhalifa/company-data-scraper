@@ -18,7 +18,7 @@ type Company struct {
 	CompanyName   string
 	CompanyNumber string
 
-	Careof string
+	CareOf string
 	POBox  string
 
 	AddressLine1 string
