@@ -1,3 +1,5 @@
 {
-    "chDataLink": "http://download.companieshouse.gov.uk/BasicCompanyData-2021-08-01-part1_6.zip"
+    "chDataLink": "http://download.companieshouse.gov.uk/BasicCompanyData-2021-08-01-part1_6.zip",
+    "zipFileName": "company-data.zip",
+    "baseChLink": "http://download.companieshouse.gov.uk/BasicCompanyData"
 }
