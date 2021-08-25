@@ -86,32 +86,24 @@ func getJsonConfig() (map[string]interface{}, error) {
 	return configJson, nil
 }
 
-func parseCsvCallback(index int, record []string) (bool, error) {
-	terminate := false
-	if index == 5 {
-		terminate = true
-	}
+func parseCsvCallback(_ int, record []string) (bool, error) {
 
 	company := buildCompany(record)
 
 	av, err := attributevalue.MarshalMap(company)
 	if err != nil {
-		return terminate, err
+		return true, err
 	}
 
 	companyInput := &dynamodb.PutItemInput{
 		Item:      av,
-		TableName: aws.String("Companies"),
+		TableName: aws.String("CompaniesData"),
 	}
 
 	_, err = dynamoClient.PutItem(context.TODO(), companyInput)
 	if err != nil {
-		return terminate, nil
+		return true, err
 	}
 
-	if index == 5 {
-		return terminate, nil
-	}
-
-	return terminate, nil
+	return false, nil
 }

@@ -1,14 +1,18 @@
 package main
 
 import (
+	"fmt"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/khalifa-is/datademon"
 	"log"
 	"path/filepath"
+	"strconv"
+	"sync"
 	"time"
 )
 
 var dynamoClient *dynamodb.Client
+var wg sync.WaitGroup
 
 func main() {
 	defer timeFxn(time.Now(), "main fxn")
@@ -25,27 +29,52 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// -2021-08-01-part1_6.zip
+	year, month, _ := time.Now().Date()
+	monthStr := ""
+	if int(month) < 10 {
+		monthStr = "0" + strconv.Itoa(int(month))
+	} else {
+		monthStr = strconv.Itoa(int(month))
+	}
 
-	chDataLink := configJson["chDataLink"].(string)
-	zipFilePath := filepath.Join("data", configJson["zipFileName"].(string))
+	baseDate := "-" + strconv.Itoa(year) + "-" + monthStr + "-01-"
+	baseChLink := configJson["baseChLink"].(string)
+	for i := 1; i < 7; i++ {
+		partName := "part" + strconv.Itoa(i) + "_6.zip"
+		chDataLink := baseChLink + baseDate + partName
+		zipFilePath := filepath.Join("data", "company-data"+partName)
 
-	_, err = datademon.DownloadZipFile(chDataLink, zipFilePath)
+		wg.Add(1)
+		go processChData(chDataLink, zipFilePath)
+	}
+	wg.Wait()
+
+	cleanupDataDirectory()
+}
+
+func processChData(link string, zip string) {
+	defer wg.Done()
+	fmt.Println("Started processing: ", link)
+	_, err := datademon.DownloadZipFile(link, zip)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	files, err := datademon.Unzip(zipFilePath, "data")
+	files, err := datademon.Unzip(zip, "data")
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	fmt.Println("Started reading: ", files[0])
 	records, err := datademon.ReadCsvFile(files[0])
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Println("Number of records: ", len(records))
 
-	datademon.ParseCsv(records, true, parseCsvCallback)
-
-	cleanupDataDirectory()
+	errors := datademon.ParseCsv(records, true, parseCsvCallback)
+	if len(errors) > 0 {
+		fmt.Println("Number of errors: ", len(errors))
+		fmt.Println(errors)
+	}
 }
