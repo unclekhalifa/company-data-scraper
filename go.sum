@@ -202,14 +202,10 @@ github.com/jstemmer/go-junit-report v0.0.0-20190106144839-af01ea7f8024/go.mod h1
 github.com/jstemmer/go-junit-report v0.9.1/go.mod h1:Brl9GWCQeLvo8nXZwPNNblvFj/XSXhF0NWZEnDohbsk=
 github.com/jtolds/gls v4.20.0+incompatible h1:xdiiI2gbIgH/gLH7ADydsJ1uDOEzR8yvV7C0MuV77Wo=
 github.com/jtolds/gls v4.20.0+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfVYBRgL+9YlvaHOwJU=
-github.com/khalifa-is/datademon v0.0.0-20210817074631-794f9de9225e h1:QiDERmZnY4jxniyDYUDb4CqZ/gJYf0vS4VKFYO8vgik=
-github.com/khalifa-is/datademon v0.0.0-20210817074631-794f9de9225e/go.mod h1:dkMYD5kMUihvsmUuxIFViWyyRXUdGcGqehdujen1a9A=
-github.com/khalifa-is/datademon v0.0.0-20210818083457-1318891398cc h1:UNBdcYnxqgFRZXMqpOTNo2MncmILGrTTyMPdVRwqaCI=
-github.com/khalifa-is/datademon v0.0.0-20210818083457-1318891398cc/go.mod h1:dkMYD5kMUihvsmUuxIFViWyyRXUdGcGqehdujen1a9A=
-github.com/khalifa-is/datademon v0.0.0-20210825134518-babd1d0987b3 h1:Vhve1IvR+kzZasn5/7bcKZ4R2UKMqsfk7dycja9FCeM=
-github.com/khalifa-is/datademon v0.0.0-20210825134518-babd1d0987b3/go.mod h1:dkMYD5kMUihvsmUuxIFViWyyRXUdGcGqehdujen1a9A=
 github.com/khalifa-is/datademon v0.0.0-20210825141218-d76f54c9b9a0 h1:h+XmnL3eVDuAoqQlNsQ+097/wn2Hnq5cZBmAvCaysQE=
 github.com/khalifa-is/datademon v0.0.0-20210825141218-d76f54c9b9a0/go.mod h1:dkMYD5kMUihvsmUuxIFViWyyRXUdGcGqehdujen1a9A=
+github.com/khalifa-is/datademon v0.0.0-20210825145446-2c7cb71200ee h1:Zd/r9IWpJTMfnepi96YBsBWLlx5t4Dz8FUTNMZhpv4k=
+github.com/khalifa-is/datademon v0.0.0-20210825145446-2c7cb71200ee/go.mod h1:dkMYD5kMUihvsmUuxIFViWyyRXUdGcGqehdujen1a9A=
 github.com/kisielk/errcheck v1.5.0/go.mod h1:pFxgyoBC7bSaBwPgfKdkLd5X25qrDl4LWUI2bnpBCr8=
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
 github.com/kr/fs v0.1.0/go.mod h1:FFnZGqtBN9Gxj7eW1uZ42v5BccTP0vu6NEaFoC2HwRg=

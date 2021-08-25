@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
+	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/spf13/viper"
 	"io/ioutil"
 	"log"
@@ -82,4 +84,34 @@ func getJsonConfig() (map[string]interface{}, error) {
 	}
 
 	return configJson, nil
+}
+
+func parseCsvCallback(index int, record []string) (bool, error) {
+	terminate := false
+	if index == 5 {
+		terminate = true
+	}
+
+	company := buildCompany(record)
+
+	av, err := attributevalue.MarshalMap(company)
+	if err != nil {
+		return terminate, err
+	}
+
+	companyInput := &dynamodb.PutItemInput{
+		Item:      av,
+		TableName: aws.String("Companies"),
+	}
+
+	_, err = dynamoClient.PutItem(context.TODO(), companyInput)
+	if err != nil {
+		return terminate, nil
+	}
+
+	if index == 5 {
+		return terminate, nil
+	}
+
+	return terminate, nil
 }

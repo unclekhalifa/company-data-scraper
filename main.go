@@ -1,15 +1,14 @@
 package main
 
 import (
-	"context"
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
 	"github.com/khalifa-is/datademon"
 	"log"
 	"path/filepath"
 	"time"
 )
+
+var dynamoClient *dynamodb.Client
 
 func main() {
 	defer timeFxn(time.Now(), "main fxn")
@@ -19,7 +18,7 @@ func main() {
 		log.Fatalf("Unable to load SDK config, %v", err)
 	}
 
-	dynamoClient := dynamodb.NewFromConfig(cfg)
+	dynamoClient = dynamodb.NewFromConfig(cfg)
 
 	configJson, err := getJsonConfig()
 	if err != nil {
@@ -46,40 +45,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var errors []map[string]interface{}
-	datademon.ParseCsv(records, func(index int, record []string) bool {
-		if record[0] == "CompanyName" {
-			return false
-		}
-
-		company := buildCompany(record)
-
-		av, err := attributevalue.MarshalMap(company)
-		if err != nil {
-			errors = append(errors, map[string]interface{}{
-				"error":   err,
-				"company": company,
-			})
-		}
-
-		companyInput := &dynamodb.PutItemInput{
-			Item:      av,
-			TableName: aws.String("Companies"),
-		}
-
-		_, err = dynamoClient.PutItem(context.TODO(), companyInput)
-		if err != nil {
-			errors = append(errors, map[string]interface{}{
-				"error":   err,
-				"company": company,
-			})
-		}
-		if index == 5 {
-			return true
-		}
-
-		return false
-	})
+	datademon.ParseCsv(records, true, parseCsvCallback)
 
 	cleanupDataDirectory()
 }
