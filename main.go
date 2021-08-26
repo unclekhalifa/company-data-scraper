@@ -70,7 +70,7 @@ func processChData(link string, zip string) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Number of records: ", len(records))
+	fmt.Println("Number of records to process: ", len(records))
 
 	errors := datademon.ParseCsv(records, true, parseCsvCallback)
 	if len(errors) > 0 {
