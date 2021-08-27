@@ -202,8 +202,6 @@ github.com/jstemmer/go-junit-report v0.0.0-20190106144839-af01ea7f8024/go.mod h1
 github.com/jstemmer/go-junit-report v0.9.1/go.mod h1:Brl9GWCQeLvo8nXZwPNNblvFj/XSXhF0NWZEnDohbsk=
 github.com/jtolds/gls v4.20.0+incompatible h1:xdiiI2gbIgH/gLH7ADydsJ1uDOEzR8yvV7C0MuV77Wo=
 github.com/jtolds/gls v4.20.0+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfVYBRgL+9YlvaHOwJU=
-github.com/khalifa-is/datademon v0.0.0-20210825141218-d76f54c9b9a0 h1:h+XmnL3eVDuAoqQlNsQ+097/wn2Hnq5cZBmAvCaysQE=
-github.com/khalifa-is/datademon v0.0.0-20210825141218-d76f54c9b9a0/go.mod h1:dkMYD5kMUihvsmUuxIFViWyyRXUdGcGqehdujen1a9A=
 github.com/khalifa-is/datademon v0.0.0-20210825145446-2c7cb71200ee h1:Zd/r9IWpJTMfnepi96YBsBWLlx5t4Dz8FUTNMZhpv4k=
 github.com/khalifa-is/datademon v0.0.0-20210825145446-2c7cb71200ee/go.mod h1:dkMYD5kMUihvsmUuxIFViWyyRXUdGcGqehdujen1a9A=
 github.com/kisielk/errcheck v1.5.0/go.mod h1:pFxgyoBC7bSaBwPgfKdkLd5X25qrDl4LWUI2bnpBCr8=
