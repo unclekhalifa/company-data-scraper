@@ -14,6 +14,7 @@ import (
 var dynamoClient *dynamodb.Client
 var wg sync.WaitGroup
 
+// Note: full execution takes > 1 hour
 func main() {
 	defer timeFxn(time.Now(), "main fxn")
 
