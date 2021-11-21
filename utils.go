@@ -96,7 +96,7 @@ func parseCsvCallback(_ int, record []string) (bool, error) {
 	}
 
 	companyInput := &dynamodb.PutItemInput{
-		Item:      av,
+		Item: av,
 		TableName: aws.String("CompaniesData"),
 	}
 
