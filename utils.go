@@ -1,18 +1,21 @@
 package main
 
+// Import mongo drivers
+
 import (
 	"context"
 	"encoding/json"
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
-	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
-	"github.com/spf13/viper"
 	"io/ioutil"
 	"log"
 	"os"
 	"path"
 	"time"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue"
+	"github.com/aws/aws-sdk-go-v2/service/dynamodb"
+	"github.com/spf13/viper"
 )
 
 func timeFxn(start time.Time, name string) {
@@ -96,7 +99,7 @@ func parseCsvCallback(_ int, record []string) (bool, error) {
 	}
 
 	companyInput := &dynamodb.PutItemInput{
-		Item: av,
+		Item:      av,
 		TableName: aws.String("CompaniesData"),
 	}
 
