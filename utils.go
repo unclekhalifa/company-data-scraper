@@ -89,6 +89,7 @@ func getJsonConfig() (map[string]interface{}, error) {
 	return configJson, nil
 }
 
+// Mongo insert here
 func parseCsvCallback(_ int, record []string) (bool, error) {
 
 	company := buildCompany(record)
