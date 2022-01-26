@@ -51,6 +51,7 @@ type Company struct {
 	CompanyNamePrevious string
 }
 
+// Check if mongo or dynamo. Implement db adapter maybe?
 func buildCompany(record []string) Company {
 	incDateTimestamp, err := time.Parse("02/01/2006", record[14])
 	if err != nil {
